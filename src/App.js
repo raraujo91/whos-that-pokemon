@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import Card from "./components/Card"
 import Box from './components/Box';
 import Header from './components/Header'
@@ -15,7 +15,7 @@ function App() {
     async function fetchData() {
       const fetchedPokemons = [];
 
-      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=151');
+      const response = await fetch('https://pokeapi.co/api/v2/pokemon?limit=15');
       const pokeAPI = await response.json();
 
       pokeAPI.results.forEach(result => {
@@ -49,7 +49,7 @@ function App() {
     localStorage.setItem('WTP:BestScore', guessedPokemons.length);
   }
 
-  const getRandomPokemon = () => {
+  const getRandomPokemon = useCallback(() => {
 
     const pokemonIds = pokemons.map(pokemon => pokemon.id);
     const getRandomPokemon = Math.floor(Math.random() * pokemonIds.length);
@@ -59,11 +59,11 @@ function App() {
     }
 
     setRandomPokemon(JSON.stringify(pokemons[getRandomPokemon]));
-  }
+  }, [pokemons])
 
   useEffect(() => {
     getRandomPokemon();
-  });
+  }, [getRandomPokemon]);
 
   return (
     <div className="relative w-full min-h-screen bg-gray-900 flex flex-col md:flex-row xl:flex-row justify-center items-center overflow-hidden">
