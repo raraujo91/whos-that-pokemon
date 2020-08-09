@@ -1,0 +1,83 @@
+.new-card {
+    animation: new-card 700ms forwards; 
+}
+
+.right-answer {
+    animation: right-answer 700ms forwards;
+}
+
+.reveal-pokemon {
+    animation: reveal-pokemon 200ms forwards;
+}
+
+.logo-animation {
+    animation: logo-animation 20s infinite;
+}
+
+.footer-animation {
+    color: cyan;
+    opacity: 0;
+    animation: footer-animation 8s infinite;
+    transition: all;
+}
+
+#pokemon {
+    filter: contrast(0%) brightness(0%);
+    transition: all;
+}
+
+@keyframes footer-animation {
+    5%, 20% {
+        opacity: 1;
+    }
+    23%, 25% {
+        opacity: 0;
+    }
+}
+
+@keyframes logo-animation {
+    1%, 3% {
+        transform: rotate(20deg) scale(1.1);
+    }
+    4%, 7% {
+        transform: rotate(-20deg) scale(1.4);
+    }
+    10% {
+        transform: rotate(0) scale(1);
+    }
+}
+
+@keyframes reveal-pokemon {
+    to {
+        filter: none;
+        opacity: 1;
+    }
+}
+
+@keyframes new-card {
+    0% {
+        transform: scale(0);
+    }
+
+    70% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        tranform: scale(1);
+    }
+}
+
+@keyframes right-answer {
+    0% {
+        transform: translateY(0%);
+    }
+
+    70% {
+        transform: translateY(-10%);
+    }
+
+    100% {
+        transform: translateY(0%);
+    }
+}
